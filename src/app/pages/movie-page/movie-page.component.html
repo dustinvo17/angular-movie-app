@@ -1,0 +1,27 @@
+
+<div class="card text-center" *ngIf="movie">
+
+    <div class="card-header">
+      Rating: {{movie.vote_average}}
+    </div>
+    <div class="card-body">
+      <img class="my-4" src="{{base_url}}{{movie.backdrop_path}}" alt="">
+      <h5 class="card-title">{{movie.title}}</h5>
+      <p class="card-text">{{movie.overview}}</p>
+      <div style="display:flex;justify-content: center;">
+        <p *ngFor="let gen of movie.genres" class="card-text mr-2">{{gen.name}}</p>
+      </div>
+     
+  
+    </div>
+    <div class="card-footer text-muted">
+      Release: {{ movie.release_date}}
+    </div>
+    <div  *ngFor="let video_url of trailer_url;let i = index" > 
+        <p>{{movie.videos.results[i].name}}</p>
+        <iframe width="720" height="720" [src]="video_url" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+ 
+    
+</div>
+
